@@ -28,10 +28,14 @@ public class Main {
             int bookIndex,
             String borrowerName
     ) {
-
+        return false;
     }
 
-    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {}
+    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {
+        return false;
+    }
 
-    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {}
+    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {
+        System.out.println("Test");
+    }
 }
