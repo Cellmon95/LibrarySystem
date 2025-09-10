@@ -18,31 +18,35 @@ public class Main {
         // Användare (index motsvarar varandra) Förinställd testdata (Person 5 skapar detta) Enkel huvudmeny (Person 5)
         ArrayList<String> userNames = new ArrayList<>();
         ArrayList<String> phoneNumbers = new ArrayList<>();
-
-
     }
 
     public static void registerUser(ArrayList<String> userNames,
                                     ArrayList<String> phoneNumbers, String name, String
-                                            phoneNumber){
+                                            phoneNumber) {
         userNames.add(name);
         phoneNumbers.add(phoneNumber);
         System.out.println("User added: name " + name + " phone number " +
                 phoneNumber);
     }
+
     public static void displayAllUsers(ArrayList<String> userNames,
-                                       ArrayList<String> phoneNumbers){
+                                       ArrayList<String> phoneNumbers) {
         for (int i = 0; i < userNames.size(); i++) {
             System.out.println("Registered users are:");
             System.out.println(userNames.get(i) + "  " +
                     phoneNumbers.get(i));
         }
     }
+
     public static int searchUser(ArrayList<String> userNames, String
-            name){
-        int result = 0;
-        return result;
-       // for (int i = 0; i < userNames.size(); i++) {
-       //    if()
+            name) {
+        int result = -1;
+
+        for (int i = 0; i < userNames.size(); i++) {
+            if (userNames.get(i).equals(name)) {
+                result = i;
+            }
         }
+        return result;
     }
+}
