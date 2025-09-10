@@ -3,6 +3,7 @@ import java.util.ArrayList;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
     public static void main(String[] args) {
         // I main-metoden - ENDAST dessa listor för att spara tid
         // Böcker (index motsvarar varandra)
@@ -18,6 +19,16 @@ public class Main {
         // Användare (index motsvarar varandra) Förinställd testdata (Person 5 skapar detta) Enkel huvudmeny (Person 5)
         ArrayList<String> userNames = new ArrayList<>();
         ArrayList<String> phoneNumbers = new ArrayList<>();
-
     }
+
+    public static boolean borrowBook(
+            ArrayList<Boolean> available,
+            ArrayList<String> borrowers,
+            ArrayList<String> borrowedBooks,
+            int bookIndex,
+            String borrowerName) {}
+
+    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {}
+
+    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {}
 }
