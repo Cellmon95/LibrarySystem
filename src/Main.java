@@ -20,4 +20,19 @@ public class Main {
         ArrayList<String> phoneNumbers = new ArrayList<>();
 
     }
+
+    public static int countAvailableBooks(ArrayList<Boolean> available)
+    {
+        return 0
+    }
+
+    public static int countBorrowedBooks(ArrayList<Boolean> available)
+    {
+        return 0;
+    }
+
+    public static void displayLibraryStatistics(ArrayList<String> titles, ArrayList<Boolean> available, ArrayList<String> userNames)
+    {
+
+    }
 }
