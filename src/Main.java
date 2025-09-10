@@ -23,16 +23,50 @@ public class Main {
 
     public static int countAvailableBooks(ArrayList<Boolean> available)
     {
-        return 0;
+        int availableBooks = 0;
+
+        for (Boolean availableBook : available)
+        {
+            if (availableBook)
+            {
+                availableBooks++;
+            }
+        }
+
+        return availableBooks;
     }
 
     public static int countBorrowedBooks(ArrayList<Boolean> available)
     {
-        return 0;
+        int borrowedBooks = 0;
+
+        for (Boolean availableBook : available)
+        {
+            if (!availableBook)
+            {
+                borrowedBooks++;
+            }
+        }
+
+        return borrowedBooks;
     }
 
     public static void displayLibraryStatistics(ArrayList<String> titles, ArrayList<Boolean> available, ArrayList<String> userNames)
     {
+        System.out.println("Library statistics:");
 
+        System.out.println("\nBooks:");
+
+        for (int i = 0; i < titles.size(); i++)
+        {
+            System.out.println(titles.get(i) + " " + (available.get(i) ? "(Available)" : ""));
+        }
+
+        System.out.println("\nUsers:");
+
+        for (String user: userNames)
+        {
+            System.out.println(user);
+        }
     }
 }
