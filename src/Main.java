@@ -18,6 +18,14 @@ public class Main {
         // Användare (index motsvarar varandra) Förinställd testdata (Person 5 skapar detta) Enkel huvudmeny (Person 5)
         ArrayList<String> userNames = new ArrayList<>();
         ArrayList<String> phoneNumbers = new ArrayList<>();
+
+        // Fördefinierade användare
+        userNames.add("Anna");
+        userNames.add("Erik");
+        phoneNumbers.add("070-1234567");
+        phoneNumbers.add("070-7654321");
+
+        displayAllUsers(userNames,phoneNumbers);
     }
 
     public static boolean borrowBook(
@@ -49,9 +57,9 @@ public class Main {
 
     public static void displayAllUsers(ArrayList<String> userNames,
                                        ArrayList<String> phoneNumbers) {
+        System.out.println("Registered users are:");
         for (int i = 0; i < userNames.size(); i++) {
-            System.out.println("Registered users are:");
-            System.out.println(userNames.get(i) + "  " +
+            System.out.println("User: " + i + " Name: " + userNames.get(i) + " phone number: " +
                     phoneNumbers.get(i));
         }
     }
