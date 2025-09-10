@@ -26,7 +26,10 @@ public class Main {
             ArrayList<String> borrowers,
             ArrayList<String> borrowedBooks,
             int bookIndex,
-            String borrowerName) {}
+            String borrowerName
+    ) {
+
+    }
 
     public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {}
 
