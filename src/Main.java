@@ -29,6 +29,13 @@ public class Main {
     ) {
         return false;
     }
+
+    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {
+        return false;
+    }
+
+    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {
+        System.out.println("Test");
     }
 
     public static void registerUser(ArrayList<String> userNames,
@@ -40,12 +47,6 @@ public class Main {
                 phoneNumber);
     }
 
-    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {
-        return false;
-    }
-
-    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {
-        System.out.println("Test");
     public static void displayAllUsers(ArrayList<String> userNames,
                                        ArrayList<String> phoneNumbers) {
         for (int i = 0; i < userNames.size(); i++) {
