@@ -19,5 +19,30 @@ public class Main {
         ArrayList<String> userNames = new ArrayList<>();
         ArrayList<String> phoneNumbers = new ArrayList<>();
 
+
     }
-}
+
+    public static void registerUser(ArrayList<String> userNames,
+                                    ArrayList<String> phoneNumbers, String name, String
+                                            phoneNumber){
+        userNames.add(name);
+        phoneNumbers.add(phoneNumber);
+        System.out.println("User added: name " + name + " phone number " +
+                phoneNumber);
+    }
+    public static void displayAllUsers(ArrayList<String> userNames,
+                                       ArrayList<String> phoneNumbers){
+        for (int i = 0; i < userNames.size(); i++) {
+            System.out.println("Registered users are:");
+            System.out.println(userNames.get(i) + "  " +
+                    phoneNumbers.get(i));
+        }
+    }
+    public static int searchUser(ArrayList<String> userNames, String
+            name){
+        int result = 0;
+        return result;
+       // for (int i = 0; i < userNames.size(); i++) {
+       //    if()
+        }
+    }
