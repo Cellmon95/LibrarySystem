@@ -60,7 +60,7 @@ public class Main {
             scanner.nextLine(); // Rensa newline
             switch (choice) {
                 case 1:
-                    displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    displayAllBooks(bookTitles, bookAuthors, bookISBN, bookAvailable);
                     break;
                 case 2:
                     displayAddBook(bookTitles, bookAuthors, bookISBN,bookAvailable);
@@ -291,7 +291,7 @@ public class Main {
     }
 
     public static void displayAllBooks(ArrayList<String> titles,
-                                       ArrayList<String> authors, ArrayList<String> isbn) {
+                                       ArrayList<String> authors, ArrayList<String> isbn,ArrayList<Boolean> availableBooks) {
 
         if(titles.isEmpty()){
             System.out.println("No book available.");
@@ -299,7 +299,9 @@ public class Main {
         }
 
         for(int i = 0; i < titles.size(); i++){
-            System.out.println(titles.get(i) +  " by " + authors.get(i) + " ISBN Number: " + isbn.get(i));
+            if(availableBooks.get(i) == true) {
+                System.out.println(titles.get(i) + " by " + authors.get(i) + " ISBN Number: " + isbn.get(i));
+            }
         }
     }
 
