@@ -53,20 +53,12 @@ public class Main {
 
     public static void displayLibraryStatistics(ArrayList<String> titles, ArrayList<Boolean> available, ArrayList<String> userNames)
     {
-        System.out.println("Library statistics:");
+        System.out.println("Library statistics:\n");
 
-        System.out.println("\nBooks:");
+        System.out.println("Total number of books: " + titles.size());
+        System.out.println("Available books: " + countAvailableBooks(available));
+        System.out.println("Borrowed books: " + countBorrowedBooks(available));
 
-        for (int i = 0; i < titles.size(); i++)
-        {
-            System.out.println(titles.get(i) + " " + (available.get(i) ? "(Available)" : ""));
-        }
-
-        System.out.println("\nUsers:");
-
-        for (String user: userNames)
-        {
-            System.out.println(user);
-        }
+        // displayAllUsers
     }
 }
