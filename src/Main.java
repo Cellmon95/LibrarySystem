@@ -136,7 +136,6 @@ public class Main {
     }
 
     public static void displayMainMenu(){
-
     }
 
     public static boolean borrowBook(
