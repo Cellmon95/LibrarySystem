@@ -28,23 +28,7 @@ public class Main {
         displayAllUsers(userNames,phoneNumbers);
     }
 
-    public static boolean borrowBook(
-            ArrayList<Boolean> available,
-            ArrayList<String> borrowers,
-            ArrayList<String> borrowedBooks,
-            int bookIndex,
-            String borrowerName
-    ) {
-        return false;
-    }
 
-    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {
-        return false;
-    }
-
-    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {
-        System.out.println("Test");
-    }
 
     public static void registerUser(ArrayList<String> userNames,
                                     ArrayList<String> phoneNumbers, String name, String
