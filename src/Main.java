@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -61,46 +60,56 @@ public class Main {
             scanner.nextLine(); // Rensa newline
             switch (choice) {
                 case 1:
-                    //displayAllBooks(bookTitles, bookAuthors,
-                    //        bookISBN);
+                    displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
-                    displayAddBook();
+                    displayAddBook(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 3:
-
-                    displayBorrowBook(userNames, bookAvailable, borrowerNames, borrowedBooks);
+                    displayBorrowBook(userNames, bookAvailable, borrowerNames, borrowedBooks, bookISBN, bookTitles, bookAuthors);
                     break;
-
                 case 4:
-                    displayReturnBook(bookISBN, bookAvailable, borrowerNames, borrowedBooks);
-                case 0:
-                    return;
+                    displayReturnBook(bookISBN, bookAvailable, borrowerNames, borrowedBooks,bookTitles, bookAuthors);
+                    break;
             }
-
-
-
         }
     }
 
-    private static void displayReturnBook(ArrayList<String> bookISBN, ArrayList<Boolean> bookAvailable, ArrayList<String> borrowerNames, ArrayList<String> borrowedBooks) {
+    private static void displayReturnBook(ArrayList<String> bookISBN,
+                                          ArrayList<Boolean> bookAvailable,
+                                          ArrayList<String> borrowerNames,
+                                          ArrayList<String> borrowedBooks,
+                                          ArrayList<String> booktitles,
+                                          ArrayList<String> authors) {
         System.out.print("Vilken bok vill du återlämna:");
         String bookName = scanner.nextLine();
 
-        int bookIndex = 0;//searchBook
-        String returnBookISBN = bookISBN.get(bookIndex);
-        if(returnBook(bookAvailable, borrowerNames, borrowedBooks, returnBookISBN))
+        int bookIndex = searchBook(booktitles, authors, bookName);
+        if (bookIndex < 0 )
         {
-            System.out.println("Booken är återlämnad.");
+            System.out.println("Boken finns inte.");
+            return;
+        }
+
+        String returnBookISBN = bookISBN.get(bookIndex);
+        if(returnBook(bookAvailable, borrowerNames, borrowedBooks, returnBookISBN, bookISBN))
+        {
+            System.out.println("Boken är återlämnad.");
         }
         else
         {
             System.out.println("Något gick fel.");
         }
-        return;
     }
 
-    private static void displayBorrowBook(ArrayList<String> userNames, ArrayList<Boolean> bookAvailable, ArrayList<String> borrowerNames, ArrayList<String> borrowedBooks) {
+    private static void displayBorrowBook(ArrayList<String> userNames,
+                                          ArrayList<Boolean> bookAvailable,
+                                          ArrayList<String> borrowerNames,
+                                          ArrayList<String> borrowedBooks,
+                                          ArrayList<String> bookISBN,
+                                          ArrayList<String> titles,
+                                          ArrayList<String> authors
+                                          ) {
         System.out.print("Vem är du?:");
         String borrowerName = scanner.nextLine();
 
@@ -112,9 +121,9 @@ public class Main {
 
         System.out.print("Vilket bok vill du låna:");
         String bookName = scanner.nextLine();
-        int bookIndex = 0; //searchBook
+        int bookIndex = searchBook(titles, authors, bookName);
 
-        if(borrowBook(bookAvailable, borrowerNames, borrowedBooks, bookIndex, borrowerName))
+        if(borrowBook(bookAvailable, borrowerNames, borrowedBooks, bookIndex, borrowerName, bookISBN))
         {
             System.out.println("Boken har lånats.");
         }
@@ -122,17 +131,23 @@ public class Main {
         {
             System.out.println("Något gick fel.");
         }
+        System.out.println(bookAvailable);
     }
 
-    private static void displayAddBook() {
+    private static void displayAddBook(ArrayList<String> bookTitles, ArrayList<String> bookAuthors, ArrayList<String> bookISBN) {
         System.out.print("Titel: ");
         String title = scanner.nextLine();
         System.out.print("Författare: ");
         String author = scanner.nextLine();
         System.out.print("ISBN: ");
         String isbn = scanner.nextLine();
-        //addBook(bookTitles, bookAuthors, bookISBN, title,
-        //        author, isbn);
+        addBook(bookTitles, bookAuthors, bookISBN, title,
+                author, isbn);
+
+        System.out.println(bookTitles);
+        System.out.println(bookAuthors);
+        System.out.println(bookISBN);
+
     }
 
     public static void displayMainMenu(){
@@ -148,7 +163,7 @@ public class Main {
         if(isAvaliable) {
             borrowers.add(borrowerName);
             borrowedBooks.add(ISBN);
-            available.set(bookIndex, true);
+            available.set(bookIndex, false);
 
             System.out.printf("%s has borrowed a book with ISBN: %s", borrowerName, ISBN);
             return true;
@@ -282,8 +297,8 @@ public class Main {
             System.out.println("No book available.");
         }
 
-        for(int i = 0; i<= titles.size(); i++){
-            System.out.println(titles.get(i) +  "by " + authors.get(i) + "ISBN Number: " + isbn.get(i));
+        for(int i = 0; i < titles.size(); i++){
+            System.out.println(titles.get(i) +  " by " + authors.get(i) + " ISBN Number: " + isbn.get(i));
         }
     }
 
