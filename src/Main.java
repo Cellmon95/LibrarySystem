@@ -30,12 +30,11 @@ public class Main {
 
     // LÅNESYSTEM
 
-    // Har lagt till String ISBN
-    public static boolean borrowBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, int bookIndex, String borrowerName, String ISBN) {
+    // Har lagt till ArrayList bookISBN!
+    public static boolean borrowBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, int bookIndex, String borrowerName, ArrayList<String> bookISBN) {
         boolean isAvaliable = available.get(bookIndex);
-        if (ISBN.isEmpty()) {
-            System.out.println("Didn't find ISBN number");
-        }
+        String ISBN = bookISBN.get(bookIndex);
+
         if(isAvaliable) {
             borrowers.add(borrowerName);
             borrowedBooks.add(ISBN);
@@ -50,7 +49,7 @@ public class Main {
     }
 
 
-    // Har lagt till bookISBN-metoden!
+    // Har lagt till ArrayList bookISBN!
     public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber, ArrayList<String> bookISBN) {
         boolean isReturned = false;
 
@@ -71,7 +70,7 @@ public class Main {
         return isReturned;
     }
 
-    // bookISBN och bookTitles är tillagda som parametrar!
+    // ArrayLists bookISBN och bookTitles är tillagda som parametrar!
     public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks, ArrayList<String> bookISBN, ArrayList<String> bookTitles) {
         for(int i = 0; i < borrowedBooks.size(); i++) {
             String borrower = borrowers.get(i);
