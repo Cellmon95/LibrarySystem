@@ -63,7 +63,7 @@ public class Main {
                     displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
-                    displayAddBook(bookTitles, bookAuthors, bookISBN);
+                    displayAddBook(bookTitles, bookAuthors, bookISBN,bookAvailable);
                     break;
                 case 3:
                     displayBorrowBook(userNames, bookAvailable, borrowerNames, borrowedBooks, bookISBN, bookTitles, bookAuthors);
@@ -134,15 +134,15 @@ public class Main {
         System.out.println(bookAvailable);
     }
 
-    private static void displayAddBook(ArrayList<String> bookTitles, ArrayList<String> bookAuthors, ArrayList<String> bookISBN) {
+    private static void displayAddBook(ArrayList<String> bookTitles, ArrayList<String> bookAuthors, ArrayList<String> bookISBN, ArrayList<Boolean> bookAvailable) {
         System.out.print("Titel: ");
         String title = scanner.nextLine();
         System.out.print("Författare: ");
         String author = scanner.nextLine();
         System.out.print("ISBN: ");
         String isbn = scanner.nextLine();
-        addBook(bookTitles, bookAuthors, bookISBN, title,
-                author, isbn);
+        addBook(bookTitles, bookAuthors, bookISBN, bookAvailable, title,
+                author, isbn, true);
 
         System.out.println(bookTitles);
         System.out.println(bookAuthors);
@@ -159,7 +159,6 @@ public class Main {
     public static boolean borrowBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, int bookIndex, String borrowerName, ArrayList<String> bookISBN) {
         boolean isAvaliable = available.get(bookIndex);
         String ISBN = bookISBN.get(bookIndex);
-
         if(isAvaliable) {
             borrowers.add(borrowerName);
             borrowedBooks.add(ISBN);
@@ -281,11 +280,12 @@ public class Main {
     }
 
     public static void addBook(ArrayList<String> titles,
-                               ArrayList<String> authors, ArrayList<String> isbn, String
-                                       title, String author, String isbnNumber) {
+                               ArrayList<String> authors, ArrayList<String> isbn, ArrayList<Boolean> availableBooks,
+                               String title, String author, String isbnNumber, boolean bookAvailable) {
         titles.add(title);
         authors.add(author);
         isbn.add(isbnNumber);
+        availableBooks.add(bookAvailable);
 
         System.out.println("Book added: " + title + "by " + author + "ISBN Number: " + isbnNumber);
     }
@@ -295,6 +295,7 @@ public class Main {
 
         if(titles.isEmpty()){
             System.out.println("No book available.");
+            return;
         }
 
         for(int i = 0; i < titles.size(); i++){
