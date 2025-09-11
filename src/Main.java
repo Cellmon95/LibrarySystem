@@ -138,22 +138,61 @@ public class Main {
     public static void displayMainMenu(){
     }
 
-    public static boolean borrowBook(
-            ArrayList<Boolean> available,
-            ArrayList<String> borrowers,
-            ArrayList<String> borrowedBooks,
-            int bookIndex,
-            String borrowerName
-    ) {
-        return false;
+    // LÅNESYSTEM
+
+    // Har lagt till String ISBN
+    public static boolean borrowBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, int bookIndex, String borrowerName, String ISBN) {
+        boolean isAvaliable = available.get(bookIndex);
+        if (ISBN.isEmpty()) {
+            System.out.println("Didn't find ISBN number");
+        }
+        if(isAvaliable) {
+            borrowers.add(borrowerName);
+            borrowedBooks.add(ISBN);
+            available.set(bookIndex, true);
+
+            System.out.printf("%s has borrowed a book with ISBN: %s", borrowerName, ISBN);
+            return true;
+        } else {
+            System.out.println("Sorry, the book is not avaliable.");
+            return false;
+        }
     }
 
-    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber) {
-        return false;
+
+    // Har lagt till bookISBN-metoden!
+    public static boolean returnBook(ArrayList<Boolean> available, ArrayList<String> borrowers, ArrayList<String> borrowedBooks, String isbnNumber, ArrayList<String> bookISBN) {
+        boolean isReturned = false;
+
+        if(!isbnNumber.isEmpty()) {
+            int indexInBorrowedBooks = borrowedBooks.indexOf(isbnNumber);
+            borrowedBooks.remove(indexInBorrowedBooks);
+            borrowers.remove(indexInBorrowedBooks);
+
+            int indexInBookISBN = bookISBN.indexOf(isbnNumber);
+            available.set(indexInBookISBN, true);
+
+            System.out.println("The book return was successful!");
+            isReturned = true;
+        } else {
+            System.out.println("No match for the ISBN number was found");
+        }
+
+        return isReturned;
     }
 
-    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks) {
-        System.out.println("Test");
+    // bookISBN och bookTitles är tillagda som parametrar!
+    public static void displayBorrowedBooks(ArrayList<String> borrowers, ArrayList<String> borrowedBooks, ArrayList<String> bookISBN, ArrayList<String> bookTitles) {
+        for(int i = 0; i < borrowedBooks.size(); i++) {
+            String borrower = borrowers.get(i);
+            String ISBNToCheck = borrowedBooks.get(i);
+            String bookTitle = "no book";
+
+            int indexToGet = bookISBN.indexOf(ISBNToCheck);
+            bookTitle = bookTitles.get(indexToGet);
+
+            System.out.printf("%s has borrowed %s%n", borrower, bookTitle);
+        }
     }
 
     public static void registerUser(ArrayList<String> userNames,
