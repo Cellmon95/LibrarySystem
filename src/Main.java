@@ -19,13 +19,6 @@ public class Main {
         ArrayList<String> userNames = new ArrayList<>();
         ArrayList<String> phoneNumbers = new ArrayList<>();
 
-        // Fördefinierade användare
-        userNames.add("Anna");
-        userNames.add("Erik");
-        phoneNumbers.add("070-1234567");
-        phoneNumbers.add("070-7654321");
-
-        displayAllUsers(userNames,phoneNumbers);
     }
 
     public static boolean borrowBook(
